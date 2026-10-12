@@ -20,6 +20,8 @@
 		<placeholder name="Location Placeholder"/>
 		<menuitem name="Connect to Server" action="Connect to Server"/>
 		<separator/>
+        <menuitem name="Open in terminal" action="Open in terminal"/>
+		<separator/>
 		<placeholder name="File Items Placeholder"/>
 		<separator/>
 		<placeholder name="Global File Items Placeholder"/>

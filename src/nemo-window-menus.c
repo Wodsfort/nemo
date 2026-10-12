@@ -1498,6 +1498,9 @@ static const GtkActionEntry main_entries[] = {
   /* name, stock id, label */  { "New Tab", "xsi-tab-new-symbolic", N_("New _Tab"),
                                  "<control>T", N_("Open another tab for the displayed location"),
                                  G_CALLBACK (action_new_tab_callback) },
+  /* name, stock id, label */  { "Open in terminal", "xsi-tab-new-symbolic", N_("Open in terminal"),
+                                  N_("Open this directory in terminal"),
+                                 G_CALLBACK (action_open_terminal_callback) },	
   /* name, stock id, label */  { "Close All Windows", NULL, N_("Close _All Windows"),
                                  "<control>Q", N_("Close all Navigation windows"),
                                  G_CALLBACK (action_close_all_windows_callback) },
@@ -1774,6 +1777,18 @@ nemo_window_create_toolbar_action_group (NemoWindow *window)
 
     action = GTK_ACTION (gtk_toggle_action_new (NEMO_ACTION_COMPACT_VIEW,
                          _("Compact"),
+                         _("Compact View"),
+                         NULL));
+   	g_signal_connect (action, "activate",
+                      G_CALLBACK (action_compact_view_callback),
+                      window);
+   	gtk_action_group_add_action (action_group, action);
+    gtk_action_set_icon_name (GTK_ACTION (action), "xsi-view-compact-symbolic");
+
+   	g_object_unref (action);
+
+ action = GTK_ACTION (gtk_toggle_action_new (NEMO_ACTION_COMPACT_VIEW,
+                         _("Other"),
                          _("Compact View"),
                          NULL));
    	g_signal_connect (action, "activate",
